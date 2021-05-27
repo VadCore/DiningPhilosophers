@@ -5,47 +5,47 @@ namespace DiningPhilosophers
     public class Fork
     {
         public int ForkName { get; }
-        private bool isUse { get; set; }
+        private bool _isUse;
 
         public bool IsUse
         {
-            get => isUse;
+            get => _isUse;
 
             set
             {
-                if (!(value ^ isUse))
+                if (!(value ^ _isUse))
                 {
                     var msg = value
                         ? $"Cannot assign fork {ForkName} when it is already assigned"
                         : $"Cannot free fork {ForkName} when it is already free";
-                    //throw new Exception(msg);
+                    throw new Exception(msg);
                 }
-                isUse = value;
+                _isUse = value;
             }
         }
-        private Philosopher whichPhilosopher;
+        private Philosopher _whichPhilosopher;
 
         public Philosopher WhichPhilosopher
         {
-            get => whichPhilosopher;
+            get => _whichPhilosopher;
             set
             {
-                if (!((value == null) ^ (whichPhilosopher == null)))
+                if (!((value == null) ^ (_whichPhilosopher == null)))
                 {
                     var msg = value == null
                         ? $"Cannot assign fork {ForkName} to no-Philosopher when it is already free"
-                        : $"Cannot assign fork {ForkName} to philosopher Ph{value} while it is assigned to philosopher {whichPhilosopher}";
+                        : $"Cannot assign fork {ForkName} to philosopher Ph{value} while it is assigned to philosopher {_whichPhilosopher}";
                     throw new Exception(msg);
                 }
-                whichPhilosopher = value;
+                _whichPhilosopher = value;
             }
         }
 
         public Fork(int name)
         {
             ForkName = name;
-            IsUse = false;
-            WhichPhilosopher = null;
+            _isUse = false;
+            _whichPhilosopher = null;
         }
     }
 }
