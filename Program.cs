@@ -29,16 +29,10 @@ namespace DiningPhilosophers
 							}, TaskContinuationOptions.OnlyOnCanceled)
 					);
 
-				// Allow philosophers to dine for DurationAllowPhilosophersToEat
-				// milliseconds.  Original problem have philosophers dine 
-				// forever, but we are not patient enough to wait until 
-				// forever...
 				Task.Delay(DurationPhilosophersEat).Wait();
 
 				try
 				{
-					// After a duration of DurationAllowPhilosophersToEat we
-					// ask the philosophers to stop dining.
 					stopDiningTokenSource.Cancel();
 					Task.WaitAll(phEatTasks.ToArray());
 				}
@@ -49,10 +43,9 @@ namespace DiningPhilosophers
 				}
 			}
 
-			// Done--so say so
 			Console.WriteLine("Done.");
 
-			// Write some statistics down
+			// Write some statistics
 			Console.WriteLine();
 			var totalEatCount = philosophers.Sum(p => p.EatCount);
 			var totalEatingTime = philosophers.Sum(p => p.TotalEatingTime);

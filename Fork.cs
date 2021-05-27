@@ -18,7 +18,7 @@ namespace DiningPhilosophers
                     var msg = value
                         ? $"Cannot assign fork {ForkName} when it is already assigned"
                         : $"Cannot free fork {ForkName} when it is already free";
-                    throw new Exception(msg);
+                    //throw new Exception(msg);
                 }
                 isUse = value;
             }
