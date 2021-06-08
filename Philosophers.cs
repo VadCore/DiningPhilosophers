@@ -19,11 +19,11 @@ namespace DiningPhilosophers
 			Enumerable.Range(0, forkCount).ToList().ForEach(name => forks.Add(new Fork(name)));
 
 			// Инициализируем философов
-			// Philosopher[i] необходима
+			// Для Philosopher[i] необходима
 			//		Fork[(i - 1) % 5] его вилка слева
-			//		Fork[i] и вилка справа
-			//
 			int LeftForkName(int phName) => (forkCount + phName - 1) % forkCount;
+
+			//Fork[i] и вилка справа
 			int RightForkName(int phName) => phName;
 
 			Enumerable.Range(0, philosopherCount).ToList().ForEach(name =>

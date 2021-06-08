@@ -13,7 +13,7 @@ namespace DiningPhilosophers
 
             set
             {
-                if (!(value ^ _isUse))
+                if (!(value != _isUse))
                 {
                     var msg = value
                         ? $"Cannot assign fork {ForkName} when it is already assigned"
@@ -30,7 +30,7 @@ namespace DiningPhilosophers
             get => _whichPhilosopher;
             set
             {
-                if (!((value == null) ^ (_whichPhilosopher == null)))
+                if (!(value == null != (_whichPhilosopher == null)))
                 {
                     var msg = value == null
                         ? $"Cannot assign fork {ForkName} to no-Philosopher when it is already free"
